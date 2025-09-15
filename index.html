@@ -1,0 +1,108 @@
+<!DOCTYPE html>  
+<html lang="pt-BR">  
+<head>  
+  <meta charset="UTF-8" />  
+  <title>Explicação básica de comandos Git</title>  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <style>  
+    body {  
+      font-family: Arial, sans-serif;  
+      line-height: 1.6;  
+      max-width: 860px;  
+      margin: 0 auto;  
+      padding: 1rem;  
+      color: #333;  
+    }  
+    h1, h2, h3 {  
+      color: #2c3e50;  
+    }  
+    pre {  
+      background: #f6f8fa;  
+      border: 1px solid #e1e4e8;  
+      padding: 12px;  
+      border-radius: 6px;  
+      overflow: auto;  
+    }  
+    code {  
+      background: #f0f0f0;  
+      padding: 2px 6px;  
+      border-radius: 4px;  
+    }  
+    .note {  
+      background: #fff4e5;  
+      border: 1px solid #f0c36d;  
+      padding: 8px 12px;  
+      border-radius: 6px;  
+      margin: 8px 0;  
+    }  
+    .section {  
+      margin-bottom: 2rem;  
+    }  
+  </style>  
+</head>  
+<body>  
+  <h1>Comandos Git: fetch, pull, merge, rebase, clone, push</h1>  
+
+  <div class="section" id="resumo">  
+    <h2>Resumo rápido</h2>  
+    <ul>  
+      <li><strong>git fetch</strong>: baixa dados do remoto e atualiza referências remotas sem mexer no HEAD nem no working tree.</li>  
+      <li><strong>git pull</strong>: fetch + merge (ou rebase) automático no branch atual.</li>  
+      <li><strong>git merge</strong>: une duas linhas de história criando um commit de merge.</li>  
+      <li><strong>git rebase</strong>: reescreve o histórico do branch atual para parecer que foi criado a partir da base mais recente (histórico linear).</li>  
+      <li><strong>git clone</strong>: cria um repositório local completo a partir de um remoto.</li>  
+      <li><strong>git push</strong>: envia commits locais para o remoto.</li>  
+    </ul>  
+  </div>  
+
+  <div class="section" id="fetch-vs-pull">  
+    <h2>fetch vs pull</h2>  
+    <h3>O que acontece?</h3>  
+    <pre><code>// git fetch  
+# Busca mudanças do remoto e atualiza origin/<branch>, sem mudar seu HEAD  
+git fetch origin  
+
+// git pull (padrão)  
+# Faz fetch + merge no branch atual  
+git pull origin main  
+</code></pre>  
+
+    <h3>Diagrama ASCII</h3>  
+    <pre><code>Antes:  
+local:  A -- B -- C (HEAD)  
+remote: R -- S -- T (origin/main)  
+
+git fetch origin  
+Depois:  
+local:  A -- B -- C (HEAD)  
+remote: R -- S -- T (origin/main)  
+# origin/main apontando para T; seu HEAD/branch não mudou  
+</code></pre>  
+  </div>  
+
+  <div class="section" id="merge-vs-rebase">  
+    <h2>Merge vs Rebase</h2>  
+    <h3>Merge</h3>  
+    <pre><code>main:   A -- B -- C  
+                 \
+feature:          D -- E  
+Merge result:     A -- B -- C -- M  
+                          / \
+                        D     E  
+</code></pre>  
+
+    <h3>Rebase</h3>  
+    <pre><code>main:   A -- B -- C  
+feature:        D -- E  
+Rebase onto main: A -- B -- C -- D' -- E'  
+</code></pre>  
+  </div>  
+
+  <div class="section" id="clone-vs-fetch-vs-pull">  
+    <h2>clone vs fetch vs pull</h2>  
+    <pre><code>// Clone  
+git clone <repo-url>  
+
+# Em um repositório existente:  
+git fetch origin      # atualiza referências remotas  
+git pull
