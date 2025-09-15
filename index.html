@@ -71,4 +71,51 @@ git clone <repo-url>
 
 # Em um repositório existente:  
 git fetch origin      # atualiza referências remotas  
-git pull
+git pull</code></pre>  
+  </div>  
+
+<h1>Comandos Git: init, status, log, add, commit</h1> 
+
+    <div class="section" id="resumo">  
+        <h2>Resumo rápido</h2>  
+        <ul>  
+        <li><strong>git init</strong>: cria um novo repositório Git local.</li>  
+        <li><strong>git status</strong>: mostra o estado atual do repositório (arquivos modificados, staged, etc.).</li>  
+        <li><strong>git log</strong>: exibe o histórico de commits.</li>  
+        <li><strong>git add</strong>: adiciona mudanças ao staging area (prepara para commit).</li>  
+        <li><strong>git commit</strong>: cria um novo commit com as mudanças staged.</li>  
+        </ul>  
+    </div>  
+    
+    <div class="section" id="init">  
+        <h2>git init</h2>  
+        <pre><code>// Cria um novo repositório Git na pasta atual  
+git init</code></pre>  
+    </div>
+    <div class="section" id="status">  
+        <h2>git status</h2>  
+        <pre><code>// Mostra o estado atual do repositório  
+git status</code></pre>  
+    </div>  
+    <div class="section" id="log">  
+        <h2>git log</h2>  
+        <pre><code>// Exibe o histórico de commits  
+git log</code></pre>  
+    </div>  
+    <div class="section" id="add">  
+        <h2>git add</h2>  
+        <pre><code>// Adiciona mudanças ao staging area  
+git add <file>          # Adiciona um arquivo específico    
+git add .               # Adiciona todas as mudanças na pasta atual  
+git add -A              # Adiciona todas as mudanças no repositório</code></pre>  
+    </div>  
+    <div class="section" id="commit">  
+        <h2>git commit</h2>
+        <pre><code>// Cria um novo commit com as mudanças staged            
+git commit -m "Mensagem do commit"   # Commit com mensagem curta
+git commit -am "Mensagem do commit"  # Adiciona e commita mudanças em um passo (arquivos já rastreados)</code></pre>  
+    </div>  
+</body>  
+</html>  
+
+  
